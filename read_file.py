@@ -4,8 +4,8 @@ import datetime
 from pathlib import Path
 import streamlit as st
 from datetime import datetime
-from pandasai import Agent
-import os
+
+
 
 
 # Function to check for multiple data types in a column
@@ -59,10 +59,9 @@ end_datetime = pd.to_datetime(end_date_only) + pd.Timedelta(days=1) - pd.Timedel
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Auto_report", page_icon=':moon:')
 
-os.environ["PANDASAI_API_KEY"] ='$2a$10$3saJ4BA.6KzozayTfmPs9.WY/w1vzRlOVPVJBJWCg6.9UfNbZd/6G'#encoded_password
 
 with st.sidebar:
-
+  
     uploaded_file = st.file_uploader("Choose a file")
     
     if uploaded_file is not None:
@@ -113,19 +112,7 @@ with st.sidebar:
         start_filter_value, end_filter_value = st.select_slider(    "Select a range",    options=filtered_options.sort_values().unique(),   value=(min_filter_value,max_filter_value ))
         
  
-        agent = Agent(df)
-        question = st.text_input("Ask a question:")
-    
-        # Step 2: If question is provided, process it with the agent
-        if question:
-            # Create an instance of Agent
-            agent = Agent(df)
-            
-            # Step 3: Get the answer from the agent
-            answer = agent.chat(question)
-            
-            # Step 4: Display the answer
-            st.write(f"Answer: {answer}")
+     
 
     else:
         st.info("Please upload an excel or csv file!")

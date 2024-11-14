@@ -1,18 +1,11 @@
 
 import pandas as pd
-import numpy as np
-
 import datetime
 from pathlib import Path
-import plotly.graph_objects as go
-
 import streamlit as st
-from io import StringIO
-from datetime import datetime, timedelta
-from PIL import Image
+from datetime import datetime
 from pandasai import Agent
 import os
-from urllib.parse import quote_plus
 
 
 # Function to check for multiple data types in a column
@@ -66,16 +59,10 @@ end_datetime = pd.to_datetime(end_date_only) + pd.Timedelta(days=1) - pd.Timedel
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Auto_report", page_icon=':moon:')
 
-
-# pandas_key = '$2a$10$3saJ4BA.6KzozayTfmPs9.WY/w1vzRlOVPVJBJWCg6.9UfNbZd/6G'
-#     # Encode the password
-# encoded_password = quote_plus(pandas_key)
 os.environ["PANDASAI_API_KEY"] ='$2a$10$3saJ4BA.6KzozayTfmPs9.WY/w1vzRlOVPVJBJWCg6.9UfNbZd/6G'#encoded_password
 
-
-
 with st.sidebar:
-   
+
     uploaded_file = st.file_uploader("Choose a file")
     
     if uploaded_file is not None:
@@ -139,18 +126,10 @@ with st.sidebar:
             
             # Step 4: Display the answer
             st.write(f"Answer: {answer}")
-        
-        
-       
 
     else:
         st.info("Please upload an excel or csv file!")
         
-# Check the data type of the selected column
-    # if df[selected_filter_column].dtype == 'int64':
-    #     st.write(f"The selected column '{selected_filter_column}' is of type int64.") 
-
-
 if uploaded_file is not None:
     if selected_columns:
             # Filter the DataFrame based on the selected range

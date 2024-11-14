@@ -74,13 +74,8 @@ os.environ["PANDASAI_API_KEY"] ='$2a$10$3saJ4BA.6KzozayTfmPs9.WY/w1vzRlOVPVJBJWC
 
 
 
-    
-
-
-
 with st.sidebar:
-    webid_png=Image.open(assets_folder.resolve()/"images"/"webid.png")
-    st.logo(webid_png,link="https://www.webid-solutions.com",icon_image=webid_png)
+   
     uploaded_file = st.file_uploader("Choose a file")
     
     if uploaded_file is not None:
